@@ -7,7 +7,9 @@ A simple implementation of the data structure of a Rubik's cube in C++. Written 
 
 -It also checks if the cube has been solved after each movement.
 
-<b>Drawbacks:</b> No 3D representation since it only uses the console to display, so the only implemented way to visually check the state of the cube is with a view in 2D of the cube unrolled. Also no colour implemented in the visualizations since the intention was to make it OS independent.
+<b>Drawbacks:</b>
+
+No 3D representation since it only uses the console to display, so the only implemented way to visually check the state of the cube is with a view in 2D of the cube unrolled. Also no colour implemented in the visualizations since the intention was to make it OS independent.
 
 <b>Future steps:</b>
 
