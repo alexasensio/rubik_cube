@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1479686642 source:d:\drive\learning\c++\rubik_cube\main.cpp
+	<iostream>
+	<string>
+	"cubelet.h"
+
+1479676707 d:\drive\learning\c++\rubik_cube\include\cubelet.h
+
+1479679020 source:d:\drive\learning\c++\rubik_cube\src\cubelet.cpp
+	"cubelet.h"
+	<iostream>
+
+1479673775 source:d:\drive\learning\c++\rubik_cube\src\cube.cpp
+	"cube.h"
+
+1479674339 d:\drive\learning\c++\rubik_cube\include\cube.h
+	<cubelet.h>
+
