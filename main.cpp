@@ -1,7 +1,7 @@
 //LIBRARIES
 #include <iostream>
 #include <string>
-# include "cubelet.h"
+#include "cubelet.h"
 
 using namespace std;
 
@@ -61,7 +61,6 @@ int main() //no need to explicitly do the "return 0" at the end of main function
 }
 
 //FUNCTIONS DEFINITIONS
-
 void Initialize_cube (cubelet (*cube)[side_length][side_length])
 {
 /*  -Task: fills a 3D array of cubelets of the corresponding colours in each axis to get a solved cube
@@ -316,42 +315,28 @@ bool solved_test (cubelet (*cube)[side_length][side_length])
 
     //Axis X: Checking the Front and Back faces to see if all elements in each face has the same colour.
     C=0;    //to check the first element of each cubelet which is where the X axis colour is storaged.
-    for (i = 0 ; i < side_length ; i+=side_length-1){   //checks 1st and last face perpendicular to axis X.
-        for (j = 0 ; j < side_length ; j++){
-            for (k = 0 ; k < side_length ; k++){
+    for (i = 0 ; i < side_length && solved ; i+=side_length-1){   //checks 1st and last face perpendicular to axis X. Only when bool "solved" is true.
+        for (j = 0 ; j < side_length && solved ; j++){
+            for (k = 0 ; k < side_length && solved ; k++){
                if (cube[i][j][k].Colour_cubelet(C) != cube[i][0][0].Colour_cubelet(C)){ //compares colour of each item with the one at [0][0] of that face
                     solved = false;     //the colour is not the same then boolean to FALSE and break
-                    break;
                }
             }
-            if (solved == false){   //allows to leave the loop earlier in case the "not solved" status has been achieved already.
-                break;
-            }
         }
-        if (solved == false){   //allows to leave the loop earlier in case the "not solved" status has been achieved already.
-                break;
-            }
     }
 
 
     //Axis Y: Checking the Up and Down faces to see if all elements in each face has the same colour.
     if(solved){ //to avoid running this code in case previous faces has already proven that is not solved
         C=1;    //to check the first element of each cubelet which is where the Y axis colour is storaged.
-        for (j = 0 ; j < side_length ; j+=side_length-1){   //checks 1st and last face perpendicular to axis Y.
-            for (i = 0 ; i < side_length ; i++){
-                for (k = 0 ; k < side_length ; k++){
+        for (j = 0 ; j < side_length && solved ; j+=side_length-1){   //checks 1st and last face perpendicular to axis Y. Only when bool "solved" is true.
+            for (i = 0 ; i < side_length && solved; i++){
+                for (k = 0 ; k < side_length && solved; k++){
                    if (cube[i][j][k].Colour_cubelet(C) != cube[0][j][0].Colour_cubelet(C)){ //compares colour of each item with the one at [i][0][0] of that face
                         solved = false;     //the colour is not the same then boolean to FALSE and break
-                        break;
                    }
                 }
-                if (solved == false){   //allows to leave the loop earlier in case the "not solved" status has been achieved already.
-                    break;
-                }
             }
-            if (solved == false){   //allows to leave the loop earlier in case the "not solved" status has been achieved already.
-                    break;
-                }
         }
     }
 
@@ -359,23 +344,17 @@ bool solved_test (cubelet (*cube)[side_length][side_length])
     //Axis Z: Checking the Left and Right faces to see if all elements in each face has the same colour.
     if(solved){  //to avoid running this code in case previous faces has already proven that is not solved
         C=2;    //to check the first element of each cubelet which is where the Z axis colour is storaged.
-        for (k = 0 ; k < side_length ; k+=side_length-1){   //checks 1st and last face perpendicular to axis Z.
-            for (i = 0 ; i < side_length ; i++){
-                for (j = 0 ; j < side_length ; j++){
+        for (k = 0 ; k < side_length && solved; k+=side_length-1){   //checks 1st and last face perpendicular to axis Z. Only when bool "solved" is true.
+            for (i = 0 ; i < side_length && solved; i++){
+                for (j = 0 ; j < side_length && solved; j++){
                    if (cube[i][j][k].Colour_cubelet(C) != cube[0][0][k].Colour_cubelet(C)){ //compares colour of each item with the one at [0][0][k] of that face
                         solved = false;     //the colour is not the same then boolean to FALSE and break
-                        break;
                    }
                 }
-                if (solved == false){   //allows to leave the loop earlier in case the "not solved" status has been achieved already.
-                    break;
-                }
             }
-            if (solved == false){   //allows to leave the loop earlier in case the "not solved" status has been achieved already.
-                    break;
-                }
         }
     }
+
 
     if(solved){
         cout << "\t---Cube is SOLVED---\n\n";
@@ -383,5 +362,7 @@ bool solved_test (cubelet (*cube)[side_length][side_length])
     else{
         cout << "\t---The cube is still unsolved---\n\n";
     }
+
+
     return solved;
 }
